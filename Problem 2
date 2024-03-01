@@ -1,0 +1,32 @@
+public class problem2 {
+    public static int numberOfHappyStrings(List<String> strings) {
+        int happyCount = 0;
+        for (String str : strings) { //for every string in List check if it is happy or not
+            if (isHappyString(str)) {
+                happyCount++; // if it is happy, add 1 to the result
+            }
+        }
+        return happyCount;
+    }
+
+    private static boolean isHappyString(String str) {
+        for (int i = 0; i < str.length() - 1; i++) { //checking every two neighbour chars in every string
+            if (str.charAt(i) == str.charAt(i + 1)) {  //if they're equal, then it isn't a happy string
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+    	//example for checking the code
+        List<String> strings = new ArrayList<>();
+        strings.add("abc");
+        strings.add("abca");
+        strings.add("abb");
+        strings.add("bcc");
+        strings.add("aabbcc");
+        int happyCount = numberOfHappyStrings(strings);
+        System.out.println("Number of happy strings: " + happyCount);
+    }
+}
