@@ -1,5 +1,3 @@
-package problems;
-
 class ListNode {
     int val;
     ListNode next;
