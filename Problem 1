@@ -1,0 +1,31 @@
+public class problem1 {
+    public static int evaluateExpression(String expression) {
+        int result = 0;
+        int currentNumber = 0;
+        char operation = '+';
+
+        for (int i = 0; i < expression.length(); i++) { //iterating through string
+            char c = expression.charAt(i); // getting ith char
+            if (Character.isDigit(c)) { //checking if it is digit
+                currentNumber = currentNumber * 10 + (c - '0'); //getting the current number
+            }
+            if (!Character.isDigit(c) && c != ' ' || i == expression.length() - 1) { // if it is not space and digit, it's operator or end of the string
+                if (operation == '+') { //if operation is + add number to result
+                    result += currentNumber;
+                } else if (operation == '-') { //if operation is - subtract number from result
+                    result -= currentNumber;
+                }
+                operation = c;
+                currentNumber = 0;
+            }
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+    	//example for checking the code
+        String expression = "5+200-85+53";
+        int result = evaluateExpression(expression);
+        System.out.println("Result: " + result);
+    }
+}
